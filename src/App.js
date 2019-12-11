@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import GenericButton from './GenericButton.js'
-//import DisplayUser from './DisplayUser.js'
+import DisplayUser from './DisplayUser.js'
 import DisplaySingleUser from './DisplaySingleUser.js'
 
 
