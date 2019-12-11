@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GenericButton from "./GenericButton";
 
-function AddUser(props) { 
+function AddUserToState(props) { 
     return (
         <form onSubmit={props.addItem}>
             <input
@@ -20,4 +20,4 @@ function AddUser(props) {
     )
 }
 
-export default AddUser
+export default AddUserToState

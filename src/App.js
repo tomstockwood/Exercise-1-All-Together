@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import GenericButton from './GenericButton.js'
-import DisplayUser from './DisplayUser.js'
+import DisplayAllUsers from './DisplayAllUsers.js'
 import DisplaySingleUser from './DisplaySingleUser.js'
 
 
@@ -40,6 +40,17 @@ class App extends Component {
     })
   }
 
+  addUserToState = event => {
+    const { users } = this.state
+    users.push({
+      firstName : 'James',
+      lastName : 'D',
+      username : 'jd',
+      gamesPlayed : 0
+    })
+    this.setState(prevState => ({users}))
+  };
+
   testFunction = event => {
     this.setState(prevState => ({ test: 'new' }));
   };
@@ -57,15 +68,10 @@ class App extends Component {
         {this.state.test}
         
         <GenericButton 
-          onClick={this.testFunction}
+          onClick={this.addUserToState}
         >
           Add user  
         </GenericButton>
-
-        {/* <DisplayUser
-          inputArray={[this.state.users[0]['username'], this.state.users[0]['gamesPlayed']]} 
-        >
-        </DisplayUser> */}
 
         <DisplaySingleUser 
           username={this.state.users[0]['username']}

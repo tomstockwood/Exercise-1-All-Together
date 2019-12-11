@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-function DisplayUser(props) {
+function DisplayAllUsers(props) {
     return (
         <ul>
               {props.inputArray.map(function(entry,index){
@@ -11,4 +11,4 @@ function DisplayUser(props) {
     )
 }
 
-export default DisplayUser
+export default DisplayAllUsers
