@@ -4,6 +4,7 @@ import './App.css';
 import GenericButton from './GenericButton.js'
 import DisplayAllUsers from './DisplayAllUsers.js'
 import DisplaySingleUser from './DisplaySingleUser.js'
+import AddUserToState from './AddUserToState.js'
 
 
 /*
@@ -16,7 +17,9 @@ The instructions for this project are located in the `instructions.md` file.
 
 class App extends Component {
   state = {
-    test : 'nothing',
+    test : '',
+    test2 : [],
+    newUser : {},
     users : [
       {
         firstName : 'Tom',
@@ -51,6 +54,35 @@ class App extends Component {
     this.setState(prevState => ({users}))
   };
 
+  addFirstName = event => {
+    const { newUser } = this.state
+    newUser['firstName'] = 'Dommy'
+    this.setState(prevState => ({newUser}))
+  };
+
+  addLastName = event => {
+    const { newUser } = this.state
+    newUser['lastName'] = 'Browne'
+    this.setState(prevState => ({newUser}))
+  };
+
+  addUsername = event => {
+    const { newUser } = this.state
+    newUser['username'] = '__DB__'
+    this.setState(prevState => ({newUser}))
+  };
+
+  handleChange = event => {
+    this.setState({ test: event.target.test });
+  };
+
+  addItem = event => {
+    event.preventDefault();
+    this.setState(oldState => ({
+      test2: [...oldState.test2, this.state.test],
+    }));
+  };
+
   testFunction = event => {
     this.setState(prevState => ({ test: 'new' }));
   };
@@ -67,10 +99,34 @@ class App extends Component {
         {this.state.users[0]['firstName']}
         {this.state.test}
         
+        <AddUserToState>
+          test={this.state.test}
+          handleChange={this.handleChange}
+          addItem={this.addItem}
+        </AddUserToState>
+
         <GenericButton 
           onClick={this.addUserToState}
         >
           Add user  
+        </GenericButton>
+
+        <GenericButton 
+          onClick={this.addFirstName}
+        >
+          Add new first name  
+        </GenericButton>
+
+        <GenericButton 
+          onClick={this.addLastName}
+        >
+          Add new last name  
+        </GenericButton>
+
+        <GenericButton 
+          onClick={this.addUsername}
+        >
+          Add new username  
         </GenericButton>
 
         {/* <DisplaySingleUser 

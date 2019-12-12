@@ -7,12 +7,12 @@ function AddUserToState(props) {
             <input
                 type="text"
                 placeholder="Enter New Item"
-                value={props.value}
+                value={props.test}
                 onChange={props.handleChange}
             />
             <GenericButton
-                disabled={props.value === ''}
-                value = {props.value}
+                disabled={props.test === ''}
+                value = {props.test}
             >
                 Add
             </GenericButton>
