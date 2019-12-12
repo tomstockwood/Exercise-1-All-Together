@@ -168,6 +168,12 @@ class App extends Component {
         </AddUserToState>
 
         <GenericButton 
+          disabled={
+            (this.state.newFirstName === ''
+            || this.state.newLastName === ''
+            || this.state.newUsername === ''
+            )
+          }
           onClick={this.addUser}
         >
           Add 
