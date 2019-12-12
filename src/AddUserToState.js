@@ -3,20 +3,23 @@ import GenericButton from "./GenericButton";
 
 function AddUserToState(props) { 
     return (
-        <form onSubmit={props.addItem}>
-            <input
-                type="text"
-                placeholder="Enter New Item"
-                value={props.test}
-                onChange={props.handleChange}
+        <div>
+          <form>
+            <input 
+              type="text" 
+              placeholder="Enter first name"
+              value={props.newFirstName}
+              onChange={props.handleFirstNameChange}
             />
-            <GenericButton
-                disabled={props.test === ''}
-                value = {props.test}
-            >
-                Add
-            </GenericButton>
-        </form>
+          </form>
+
+          <GenericButton 
+            disabled={props.test === ''}
+            onClick={props.addFirstName}
+          >
+            Add new first name  
+          </GenericButton>
+        </div>
     )
 }
 

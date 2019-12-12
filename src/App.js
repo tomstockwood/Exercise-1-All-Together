@@ -18,7 +18,11 @@ The instructions for this project are located in the `instructions.md` file.
 class App extends Component {
   state = {
     test : '',
+    value : '',
     test2 : [],
+    newFirstName : '',
+    newLastName : '',
+    newUsername : '',
     newUser : {},
     users : [
       {
@@ -56,24 +60,28 @@ class App extends Component {
 
   addFirstName = event => {
     const { newUser } = this.state
-    newUser['firstName'] = 'Dommy'
+    newUser['firstName'] = this.state.value
     this.setState(prevState => ({newUser}))
   };
 
   addLastName = event => {
     const { newUser } = this.state
     newUser['lastName'] = 'Browne'
-    this.setState(prevState => ({newUser}))
+    this.setState(() => ({ newUser }))
   };
 
   addUsername = event => {
     const { newUser } = this.state
     newUser['username'] = '__DB__'
-    this.setState(prevState => ({newUser}))
+    this.setState(() => ({ newUser }))
   };
 
   handleChange = event => {
-    this.setState({ test: event.target.test });
+    this.setState({ test: event.target.value });
+  };
+
+  handleFirstNameChange = event => {
+    this.setState({ newFirstName: event.target.value });
   };
 
   addItem = event => {
@@ -129,11 +137,14 @@ class App extends Component {
           Add new username  
         </GenericButton>
 
-        {/* <DisplaySingleUser 
-          username={this.state.users[0]['username']}
-          gamesPlayed={this.state.users[0]['gamesPlayed']}
+        <AddUserToState
+          test={this.state.test}
+          newFirstName={this.state.newFirstName}
+          addFirstName={this.addFirstName}
+          handleChange={this.handleChange}
+          handleFirstNameChange={this.handleFirstNameChange}
         >
-        </DisplaySingleUser> */}
+        </AddUserToState>
 
         <DisplayAllUsers
           inputArray={this.state.users}

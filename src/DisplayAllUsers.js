@@ -5,12 +5,12 @@ import DisplaySingleUser from './DisplaySingleUser.js';
 function DisplayAllUsers(props) {
     return (
         <ul>
-            {props.inputArray.map(function(entry,index){
+            {props.inputArray.map((entry, index) => {
                 return (
-                    <li key = { index }> 
+                    <li key={index}> 
                         <DisplaySingleUser
-                            username={entry['username']}
-                            gamesPlayed={entry['gamesPlayed']}
+                            username={entry.username}
+                            gamesPlayed={entry.gamesPlayed}
                         >
                         </DisplaySingleUser> 
                     </li> 
