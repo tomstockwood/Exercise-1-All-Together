@@ -27,18 +27,18 @@ class App extends Component {
     ]
   };
 
-  componentDidMount() {
-    const { users } = this.state
+  // componentDidMount() {
+  //   const { users } = this.state
 
-    this.setState({
-      users: [
-        {
-          ...users[0],
-          firstName: 'hello'
-        }
-      ],
-    })
-  }
+  //   this.setState({
+  //     users: [
+  //       {
+  //         ...users[0],
+  //         firstName: 'hello'
+  //       }
+  //     ],
+  //   })
+  // }
 
   addUserToState = event => {
     const { users } = this.state
@@ -61,7 +61,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">ReactND - Coding Practice - Test</h1>
+          <h1 className="App-title">ReactND - Coding Practice - Test?!</h1>
         </header>
         
         {this.state.users[0]['firstName']}
@@ -78,6 +78,11 @@ class App extends Component {
           gamesPlayed={this.state.users[0]['gamesPlayed']}
         >
         </DisplaySingleUser>
+
+        <DisplayAllUsers
+          inputArray={this.state.users}
+        >
+        </DisplayAllUsers>
 
       </div>
     );
