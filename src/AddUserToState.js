@@ -25,12 +25,12 @@ function AddUserToState(props) {
             />
           </form>
 
-          <GenericButton 
+          {/* <GenericButton 
             disabled={props.test === ''}
             onClick={props.addFirstName}
           >
             Add new first name  
-          </GenericButton>
+          </GenericButton> */}
         </div>
     )
 }

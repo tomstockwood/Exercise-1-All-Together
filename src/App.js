@@ -20,6 +20,7 @@ class App extends Component {
     test : '',
     value : '',
     test2 : [],
+    ShowHideButtonText : 'Hide the Number of Games Played',
     newFirstName : '',
     newLastName : '',
     newUsername : '',
@@ -30,7 +31,8 @@ class App extends Component {
         username : 'toms',
         gamesPlayed : 0
       },
-    ]
+    ],
+    gamesPlayedStore : [0]
   };
 
   // componentDidMount() {
@@ -63,7 +65,45 @@ class App extends Component {
         username : this.state.newUsername,
         gamesPlayed : 0
       })
-      this.setState(prevState => ({users}))
+
+      const gamesPlayedArray = this.state.users.map(
+        entry => {return(entry.gamesPlayed)}
+      )
+
+      this.setState(prevState => ({users,
+        gamesPlayedStore : gamesPlayedArray
+      }))
+    }
+  };
+
+  changeShowHideButtonText = event => {
+    const { gamesPlayedStore } = this.state
+
+    if (this.state.ShowHideButtonText === 'Show the Number of Games Played') { 
+      let { users } = this.state
+      users = users.map((entry, index) => {return({
+        ...entry,
+        gamesPlayed : gamesPlayedStore[index] 
+      })})
+      this.setState({ 
+        ShowHideButtonText: 'Hide the Number of Games Played',
+        //gamesPlayedStore : gamesPlayedArray,
+        users : users
+      })
+    }
+    
+    else {
+      let { users } = this.state
+      users = users.map(entry => {return({
+        ...entry,
+        gamesPlayed : '/*' 
+      })})
+
+      this.setState({ 
+        ShowHideButtonText: 'Show the Number of Games Played',
+        //gamesPlayedStore : gamesPlayedArray,
+        users : users
+      })
     }
   };
 
@@ -101,16 +141,24 @@ class App extends Component {
     this.setState({ newUsername: event.target.value });
   };
 
-  addItem = event => {
-    event.preventDefault();
-    this.setState(oldState => ({
-      test2: [...oldState.test2, this.state.test],
-    }));
+  hideGamesPlayed = event => {
+    this.setState({ ShowHideButtonText: 'Show the Number of Games Played'})
+  };
+  
+  showGamesPlayed = event => {
+    this.setState({ ShowHideButtonText: 'Hide the Number of Games Played'})
   };
 
-  testFunction = event => {
-    this.setState(prevState => ({ test: 'new' }));
-  };
+  // addItem = event => {
+  //   event.preventDefault();
+  //   this.setState(oldState => ({
+  //     test2: [...oldState.test2, this.state.test],
+  //   }));
+  // };
+
+  // testFunction = event => {
+  //   this.setState(prevState => ({ test: 'new' }));
+  // };
 
   render() {
     console.log(this.state)
@@ -183,6 +231,12 @@ class App extends Component {
           inputArray={this.state.users}
         >
         </DisplayAllUsers>
+      
+        <GenericButton
+          onClick={this.changeShowHideButtonText}
+        >
+          {this.state.ShowHideButtonText}
+        </GenericButton>
 
       </div>
     );
