@@ -53,7 +53,7 @@ class App extends Component {
     ) 
     
     if (usernameArray.includes(this.state.newUsername)) {
-      console.log('Error')
+      window.alert('That username is already in use')
     }
 
     else {
