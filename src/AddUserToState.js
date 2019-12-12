@@ -11,6 +11,18 @@ function AddUserToState(props) {
               value={props.newFirstName}
               onChange={props.handleFirstNameChange}
             />
+            <input 
+              type="text" 
+              placeholder="Enter last name"
+              value={props.newLastName}
+              onChange={props.handleLastNameChange}
+            />
+            <input 
+              type="text" 
+              placeholder="Enter username"
+              value={props.newUsername}
+              onChange={props.handleUsernameChange}
+            />
           </form>
 
           <GenericButton 

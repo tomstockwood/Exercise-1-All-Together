@@ -50,9 +50,9 @@ class App extends Component {
   addUserToState = event => {
     const { users } = this.state
     users.push({
-      firstName : 'James',
-      lastName : 'D',
-      username : 'jd',
+      firstName : this.state.newFirstName,
+      lastName : this.state.newLastName,
+      username : this.state.newUsername,
       gamesPlayed : 0
     })
     this.setState(prevState => ({users}))
@@ -82,6 +82,14 @@ class App extends Component {
 
   handleFirstNameChange = event => {
     this.setState({ newFirstName: event.target.value });
+  };
+  
+  handleLastNameChange = event => {
+    this.setState({ newLastName: event.target.value });
+  };
+  
+  handleUsernameChange = event => {
+    this.setState({ newUsername: event.target.value });
   };
 
   addItem = event => {
@@ -140,9 +148,13 @@ class App extends Component {
         <AddUserToState
           test={this.state.test}
           newFirstName={this.state.newFirstName}
+          newLastName={this.state.newLastName}
+          newUsername={this.state.newUsername}
           addFirstName={this.addFirstName}
           handleChange={this.handleChange}
           handleFirstNameChange={this.handleFirstNameChange}
+          handleLastNameChange={this.handleLastNameChange}
+          handleUsernameChange={this.handleUsernameChange}
         >
         </AddUserToState>
 
