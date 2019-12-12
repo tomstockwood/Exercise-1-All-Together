@@ -73,11 +73,11 @@ class App extends Component {
           Add user  
         </GenericButton>
 
-        <DisplaySingleUser 
+        {/* <DisplaySingleUser 
           username={this.state.users[0]['username']}
           gamesPlayed={this.state.users[0]['gamesPlayed']}
         >
-        </DisplaySingleUser>
+        </DisplaySingleUser> */}
 
         <DisplayAllUsers
           inputArray={this.state.users}
