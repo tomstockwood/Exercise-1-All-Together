@@ -23,7 +23,6 @@ class App extends Component {
     newFirstName : '',
     newLastName : '',
     newUsername : '',
-    newUser : {},
     users : [
       {
         firstName : 'Tom',
@@ -47,15 +46,25 @@ class App extends Component {
   //   })
   // }
 
-  addUserToState = event => {
+  addUser = event => {
     const { users } = this.state
-    users.push({
-      firstName : this.state.newFirstName,
-      lastName : this.state.newLastName,
-      username : this.state.newUsername,
-      gamesPlayed : 0
-    })
-    this.setState(prevState => ({users}))
+    const usernameArray = this.state.users.map(
+      entry => {return(entry.username)}
+    ) 
+    
+    if (usernameArray.includes(this.state.newUsername)) {
+      console.log('Error')
+    }
+
+    else {
+      users.push({
+        firstName : this.state.newFirstName,
+        lastName : this.state.newLastName,
+        username : this.state.newUsername,
+        gamesPlayed : 0
+      })
+      this.setState(prevState => ({users}))
+    }
   };
 
   addFirstName = event => {
@@ -112,7 +121,7 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice - Test?!</h1>
         </header>
         
-        {this.state.users[0]['firstName']}
+        {/* {this.state.users[0]['firstName']}
         {this.state.test}
         
         <AddUserToState>
@@ -143,7 +152,7 @@ class App extends Component {
           onClick={this.addUsername}
         >
           Add new username  
-        </GenericButton>
+        </GenericButton> */}
 
         <AddUserToState
           test={this.state.test}
@@ -157,6 +166,12 @@ class App extends Component {
           handleUsernameChange={this.handleUsernameChange}
         >
         </AddUserToState>
+
+        <GenericButton 
+          onClick={this.addUser}
+        >
+          Add 
+        </GenericButton>
 
         <DisplayAllUsers
           inputArray={this.state.users}
