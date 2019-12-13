@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import GenericButton from "./GenericButton";
 
 function AddUserToState(props) { 
     return (
@@ -24,13 +23,6 @@ function AddUserToState(props) {
               onChange={props.handleUsernameChange}
             />
           </form>
-
-          {/* <GenericButton 
-            disabled={props.test === ''}
-            onClick={props.addFirstName}
-          >
-            Add new first name  
-          </GenericButton> */}
         </div>
     )
 }
