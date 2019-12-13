@@ -6,11 +6,14 @@ function DisplayAllUsers(props) {
     return (
         <ul>
             {props.inputArray.map((entry, index) => {
+                const gamesPlayed = props.showGamesPlayed
+                    ? entry.gamesPlayed
+                    : '/*'
                 return (
                     <li key={index}> 
                         <DisplaySingleUser
                             username={entry.username}
-                            gamesPlayed={entry.gamesPlayed}
+                            gamesPlayed={gamesPlayed}
                         >
                         </DisplaySingleUser> 
                     </li> 

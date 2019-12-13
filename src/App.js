@@ -76,35 +76,34 @@ class App extends Component {
     }
   };
 
-  changeShowHideButtonText = event => {
-    const { gamesPlayedStore } = this.state
+  toggleShowGamesPlayed = () => {
+    this.setState({
+      showGamesPlayed: !this.state.showGamesPlayed
+    })
+    // if (this.state.showGamesPlayed) { 
+    //   let { users } = this.state
+    //   users = users.map((entry, index) => {return({
+    //     ...entry,
+    //     gamesPlayed : gamesPlayedStore[index] 
+    //   })})
+    //   this.setState({ 
+    //     ShowHideButtonText: 'Hide the Number of Games Played',
+    //     //gamesPlayedStore : gamesPlayedArray,
+    //     users : users
+    //   })
+    // } else {
+    //   let { users } = this.state
+    //   users = users.map(entry => {return({
+    //     ...entry,
+    //     gamesPlayed : '/*' 
+    //   })})
 
-    if (this.state.ShowHideButtonText === 'Show the Number of Games Played') { 
-      let { users } = this.state
-      users = users.map((entry, index) => {return({
-        ...entry,
-        gamesPlayed : gamesPlayedStore[index] 
-      })})
-      this.setState({ 
-        ShowHideButtonText: 'Hide the Number of Games Played',
-        //gamesPlayedStore : gamesPlayedArray,
-        users : users
-      })
-    }
-    
-    else {
-      let { users } = this.state
-      users = users.map(entry => {return({
-        ...entry,
-        gamesPlayed : '/*' 
-      })})
-
-      this.setState({ 
-        ShowHideButtonText: 'Show the Number of Games Played',
-        //gamesPlayedStore : gamesPlayedArray,
-        users : users
-      })
-    }
+    //   this.setState({ 
+    //     ShowHideButtonText: 'Show the Number of Games Played',
+    //     //gamesPlayedStore : gamesPlayedArray,
+    //     users : users
+    //   })
+    // }
   };
 
   addFirstName = event => {
@@ -141,14 +140,6 @@ class App extends Component {
     this.setState({ newUsername: event.target.value });
   };
 
-  hideGamesPlayed = event => {
-    this.setState({ ShowHideButtonText: 'Show the Number of Games Played'})
-  };
-  
-  showGamesPlayed = event => {
-    this.setState({ ShowHideButtonText: 'Hide the Number of Games Played'})
-  };
-
   // addItem = event => {
   //   event.preventDefault();
   //   this.setState(oldState => ({
@@ -161,46 +152,13 @@ class App extends Component {
   // };
 
   render() {
-    console.log(this.state)
+
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">ReactND - Coding Practice - Test?!</h1>
+          <h1 className="App-title">ReactND - Coding Practice - Test??!</h1>
         </header>
-        
-        {/* {this.state.users[0]['firstName']}
-        {this.state.test}
-        
-        <AddUserToState>
-          test={this.state.test}
-          handleChange={this.handleChange}
-          addItem={this.addItem}
-        </AddUserToState>
-
-        <GenericButton 
-          onClick={this.addUserToState}
-        >
-          Add user  
-        </GenericButton>
-
-        <GenericButton 
-          onClick={this.addFirstName}
-        >
-          Add new first name  
-        </GenericButton>
-
-        <GenericButton 
-          onClick={this.addLastName}
-        >
-          Add new last name  
-        </GenericButton>
-
-        <GenericButton 
-          onClick={this.addUsername}
-        >
-          Add new username  
-        </GenericButton> */}
 
         <AddUserToState
           test={this.state.test}
@@ -228,14 +186,17 @@ class App extends Component {
         </GenericButton>
 
         <DisplayAllUsers
+          showGamesPlayed={this.state.showGamesPlayed}
           inputArray={this.state.users}
         >
         </DisplayAllUsers>
       
         <GenericButton
-          onClick={this.changeShowHideButtonText}
+          onClick={this.toggleShowGamesPlayed}
         >
-          {this.state.ShowHideButtonText}
+          {this.state.showGamesPlayed
+            ? 'Hide the Number of Games Played'
+            : 'Show the Number of Games Played'}
         </GenericButton>
 
       </div>
